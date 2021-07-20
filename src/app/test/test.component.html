@@ -1,0 +1,30 @@
+<div *ngIf="status" >
+    <input type = "text" placeholder = "english" [(ngModel)]="worldClass.en">
+    <br>
+    <input type = "text" placeholder = "vietnamese" [(ngModel)]="worldClass.vn">
+    <br>
+    <button type="button" (click)="addWord()">add</button> 
+    
+</div>
+
+<div *ngIf="!status">
+    <button type="button" (click)="status = true">add</button>
+</div>
+
+<br>
+<select>
+    <option value="">all word</option>
+    <option value="">memorized</option>
+    <option value="">not memorized</option>
+    
+</select>
+
+<br>
+
+<div *ngFor="let word of arrWords" class="word">
+    <h4 [style.color]="word.memorized ? 'green' : 'red' " >{{word.en}}</h4>
+    <p>{{word.vn }}</p>
+    <p>{{word.memorized }}</p>
+    <!-- <p>{{ word.id }}</p> -->
+    <button (click)="deleteWord(word)">delete</button>
+</div>
